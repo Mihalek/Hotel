@@ -1,0 +1,15 @@
+#map {
+    width: 70%;
+    height: 70vh;
+    margin-left: 15%;
+    padding-top: 2%;
+    padding-bottom: 3%;
+    border: radius;
+  }
+
+p{
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 30px;
+  text-align: center;
+}

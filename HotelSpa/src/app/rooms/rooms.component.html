@@ -1,0 +1,44 @@
+<div class="container">
+    <h2>Free rooms:</h2>
+    <div *ngFor="let room of rooms">
+        <div class="row">
+            <div class="col-sm offset-1">
+                <img src={{room.urlOfPhoto}} alt="photo of room">
+            </div>
+            <div class="col-sm">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <br>
+                        <p>Number of People: {{room.numberOfPeople}}</p>
+                        <p>Is view on mountains: {{room.isViewOnMountains == true ? 'Yes' : 'No' }}</p>
+                        <p>Is bathroom in room: {{room.isBathroom == true ? 'Yes' : 'No' }}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <br>
+                        <p>Number of Beds: {{room.numberOfBeds}}</p>
+                        <p>Is tv in room: {{room.isTv == true ? 'Yes' : 'No' }}</p>
+                        <p>Is toilet in room: {{room.isToilet == true ? 'Yes' : 'No' }}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm">
+                        <p>Description: {{room.description}}</p>
+                    </div>
+                </div>
+                <br>
+                <br>
+                <div class="row">
+                    <div class="col-sm">
+                        <p class="price">Day Price for {{room.numberOfPeople}} people: {{room.dayPrice}} PLN</p>
+                    </div>
+                    <div class="col-sm">
+                        <button class="btn btn-lg btn-warning">Reserve this room</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+    </div>
+</div>

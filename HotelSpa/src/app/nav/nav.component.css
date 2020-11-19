@@ -1,0 +1,23 @@
+a {
+    text-transform: uppercase;
+    color: white;    
+}
+
+ul {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.formlogin{
+    margin-right: 5px;
+}
+
+.formpassword{
+    margin-right: 5px;
+}
+
+.formbutton{
+    margin-top: 8px;
+}
+
+

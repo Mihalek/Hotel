@@ -28,6 +28,7 @@ namespace HotelApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IRoomService, RoomService>();
             services.AddScoped<IReservationService, ReservationService>();
             services.AddSingleton(AutoMapperConfig.Initialize());

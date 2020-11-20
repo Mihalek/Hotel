@@ -12,7 +12,6 @@ namespace HotelApi.AutoMappers
     {
         public static IMapper Initialize() => new MapperConfiguration(cfg =>
         {
-            cfg.CreateMap<User, UserDTO>();
             cfg.CreateMap<User, UserForRegisterDTO>();
             cfg.CreateMap<User, UserForLoginDTO>();
             cfg.CreateMap<Room, RoomDTO>();

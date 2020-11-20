@@ -9,8 +9,8 @@ namespace HotelApi.IServices
 {
     public interface IUserService
     {
-        Task <IEnumerable<UserDTO>>  BrowseAsync();
-        Task<UserDTO> GetAsync(int id);
+        Task <IEnumerable<UserForLoginDTO>>  BrowseAsync();
+        Task<UserForLoginDTO> GetAsync(int id);
         Task AddAsync(string name, string surname);
         Task DeleteAsync(int id);
     }

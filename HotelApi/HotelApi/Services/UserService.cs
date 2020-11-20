@@ -32,11 +32,11 @@ namespace HotelApi.Services
             await dataContext.SaveChangesAsync();
         }
 
-        public async Task <IEnumerable<UserDTO>> BrowseAsync()
+        public async Task <IEnumerable<UserForLoginDTO>> BrowseAsync()
         {
             var clients = await dataContext.Users.ToListAsync();
 
-            return mapper.Map<IEnumerable<UserDTO>>(clients);
+            return mapper.Map<IEnumerable<UserForLoginDTO>>(clients);
         }
 
         public async Task DeleteAsync(int id)
@@ -47,11 +47,11 @@ namespace HotelApi.Services
 
         }
 
-        public async Task<UserDTO> GetAsync(int id)
+        public async Task<UserForLoginDTO> GetAsync(int id)
         {
             var client = await dataContext.Users.FirstOrDefaultAsync(x => x.Id == id);
 
-            return mapper.Map<UserDTO>(client);
+            return mapper.Map<UserForLoginDTO>(client);
         }
     }
 }

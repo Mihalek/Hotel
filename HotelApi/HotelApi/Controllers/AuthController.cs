@@ -68,6 +68,7 @@ namespace HotelApi.Controllers
                 return BadRequest("User is exists");
             }
 
+
             var userToCreate = new User
             {
                 Username = userForRegisterDTO.Username,

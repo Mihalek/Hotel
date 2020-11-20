@@ -19,7 +19,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatInputModule} from '@angular/material/input';
 import { RoomService } from './_services/room.service';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { HttpClientModule } from '@angular/common/http'
     MatDatepickerModule,
     MatNativeDateModule,
     MatInputModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
     
   ],
   providers: [RoomService],

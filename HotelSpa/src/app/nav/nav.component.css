@@ -8,6 +8,10 @@ ul {
     padding-bottom: 10px;
 }
 
+.dropdown, .dropdown-item{
+    margin-right: 30px;
+}
+
 .formlogin{
     margin-right: 5px;
 }

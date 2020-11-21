@@ -1,4 +1,6 @@
+import { ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { Form, FormGroup, NgForm } from '@angular/forms';
 import { AuthService } from '../_services/auth.service';
 
 @Component({
@@ -11,7 +13,7 @@ export class RegisterComponent implements OnInit {
   registerMode = false;
   model:any ={};
   constructor(private authService: AuthService) { }
-
+  @ViewChild('registerForm') registerForm : NgForm;
 
   ngOnInit(): void {
   }
@@ -20,9 +22,10 @@ export class RegisterComponent implements OnInit {
     this.registerMode = !this.registerMode;
   }
   register(){
-    console.log(this.model);
     this.authService.register(this.model).subscribe(() =>{
       console.log('congratulation, you are new user');
+      this.registerForm.reset();
+      this.registerToggle();
     }, error =>{
       console.log(error);
     });

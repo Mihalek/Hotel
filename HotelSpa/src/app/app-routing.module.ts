@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { ReserveroomComponent } from './reserveroom/reserveroom.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { ServicesComponent } from './services/services.component';
+import { AuthGuard } from './_guards/auth.guard';
 
 const routes: Routes = [
   {path: '' , pathMatch: 'full' , redirectTo: 'register'},
@@ -12,7 +13,7 @@ const routes: Routes = [
   {path: 'rooms' , component: RoomsComponent},
   {path: 'services' , component: ServicesComponent},
   {path: 'contact' , component: ContactComponent},
-  {path: 'reserveroom' , component: ReserveroomComponent}
+  {path: 'reserveroom' , component: ReserveroomComponent, canActivate: [AuthGuard]}
 ];
 
 @NgModule({

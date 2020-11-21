@@ -21,6 +21,8 @@ import { MatInputModule} from '@angular/material/input';
 import { RoomService } from './_services/room.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule} from '@angular/forms';
+import { AuthService } from './_services/auth.service';
+import { AuthGuard } from './_guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -45,10 +47,14 @@ import { FormsModule} from '@angular/forms';
     MatNativeDateModule,
     MatInputModule,
     HttpClientModule,
-    FormsModule
-    
+    FormsModule,
+
   ],
-  providers: [RoomService],
+  providers: [
+    RoomService,
+    AuthService, 
+    AuthGuard  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -19,7 +19,7 @@
   <div *ngIf="loggedIn()" class="dropdown ml-auto">
     <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
       aria-haspopup="true" aria-expanded="false">
-      Welcome User
+      Welcome {{ authService.decodedToken?.unique_name }}
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
       <button (click)="logout()" class="dropdown-item" type="button">Logout</button>

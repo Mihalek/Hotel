@@ -12,7 +12,7 @@ export class RegisterComponent implements OnInit {
 
   registerMode = false;
   model:any ={};
-  constructor(private authService: AuthService) { }
+  constructor(public authService: AuthService) { }
   @ViewChild('registerForm') registerForm : NgForm;
 
   ngOnInit(): void {
@@ -29,6 +29,9 @@ export class RegisterComponent implements OnInit {
     }, error =>{
       console.log(error);
     });
+  }
+  loggedIn(){
+    return this.authService.loggedIn();
   }
 
 }

@@ -1,4 +1,5 @@
 export interface Room {
+    id :number;
     numberOfPeople: number;
     numberOfBeds: number;
     description: string;
@@ -8,5 +9,5 @@ export interface Room {
     isTv: boolean;
     dayPrice: number;
     urlOfPhoto: string;
-
 }
+

@@ -36,5 +36,4 @@ loggedIn(){
   return !this.jwtHelper.isTokenExpired(token);
 }
 
-
 }

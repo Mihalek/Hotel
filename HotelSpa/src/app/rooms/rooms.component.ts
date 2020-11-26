@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ReservationToAdd } from '../_models/reservationToAdd';
 import { Room } from '../_models/room';
+import { ReservationService } from '../_services/reservation.service';
 import { RoomService } from '../_services/room.service';
 
 @Component({
@@ -10,7 +12,8 @@ import { RoomService } from '../_services/room.service';
 export class RoomsComponent implements OnInit {
 
   rooms: Room[];
-  constructor(private roomService: RoomService) { }
+  reservationToAdd: ReservationToAdd;
+  constructor(private roomService: RoomService, private reservationService : ReservationService) { }
 
   ngOnInit(): void {
     this.loadRooms();
@@ -23,6 +26,10 @@ export class RoomsComponent implements OnInit {
       }, error => {
         console.log(error);
       })
+  }
+
+  reserveRoom() {
+    
   }
 
 }

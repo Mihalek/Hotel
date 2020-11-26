@@ -23,18 +23,19 @@ namespace HotelApi.Controllers
             userService = userService_;
         }
         
-        [HttpPost]
-        public async Task<IActionResult> AddAsync([FromBody] ReservationToAddDTO reservationToAddDTO) 
+        [HttpPost("reserve")]
+        public async Task<IActionResult> AddAsync(ReservationToAddDTO reservationToAddDTO) 
         {
             Reservation reservation = new Reservation
             {
+                DateOfReservation = reservationToAddDTO.DateOfReservation,
                 StartReservation = reservationToAddDTO.StartReservation,
                 EndReservation = reservationToAddDTO.EndReservation,
-                DateOfReservation = DateTime.UtcNow,
                 IdOfRoom = reservationToAddDTO.IdOfRoom,
                 IdOfUser = reservationToAddDTO.IdOfUser,
                 IsCanceled = false
             };
+
             await reservationService.AddAsync(reservation);
             return Ok();
         }

@@ -7,6 +7,7 @@ namespace HotelApi.DTO
 {
     public class RoomDTO
     {
+        public int Id { get; set; }
         public int NumberOfPeople { get; set; }
         public int NumberOfBeds { get; set; }
         public string Description { get; set; }

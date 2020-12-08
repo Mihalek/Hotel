@@ -6,17 +6,17 @@
         <div class="form-group searchroom">
           <mat-form-field>
             <mat-label>Choose a first day</mat-label>
-            <input matInput [matDatepicker]="picker1">
+            <input #startdate (dateChange)="changeStartDate()" [(ngModel)]="startDate" name="startdate" matInput [matDatepicker]="picker1">
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
             <mat-datepicker #picker1></mat-datepicker>
           </mat-form-field>
           <mat-form-field>
             <mat-label>Choose a last day</mat-label>
-            <input matInput [matDatepicker]="picker2">
+            <input #enddate (dateChange)="changeEndDate()" [(ngModel)]="endDate" name="enddate" matInput [matDatepicker]="picker2">
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
           </mat-form-field>
-          <button type="submit" class="btn btn-primary">Search</button>
+          <button (click)="Search()" type="submit" class="btn btn-primary">Search</button>
         </div>
       </form>
     </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../_services/auth.service';
+import { ReservationService } from '../_services/reservation.service';
 
 @Component({
   selector: 'app-nav',
@@ -8,9 +9,10 @@ import { AuthService } from '../_services/auth.service';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-
+  message : string;
   model: any = {};
-  constructor(public authService : AuthService, private router: Router) { }
+  constructor(public authService : AuthService, private router: Router) { 
+  }
 
   ngOnInit(): void {
   }

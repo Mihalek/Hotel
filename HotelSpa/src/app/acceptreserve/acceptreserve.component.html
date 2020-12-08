@@ -1,0 +1,21 @@
+<div class="container">
+<h1><b>Do you accept the reservation of this room?</b></h1>
+<div class="row">
+  <div class="col-sm-6">
+  <img src="{{room.urlOfPhoto}}" alt="no photo">
+  </div>
+  <div class="col-sm-6 info">
+    <p class="p">Number of People: {{room.numberOfPeople}}</p>
+    <p class="p">Is view on mountains: {{room.isViewOnMountains == true ? 'Yes' : 'No' }}</p>
+    <p class="p">Is bathroom in room: {{room.isBathroom == true ? 'Yes' : 'No' }}</p>
+    <p class="p">Number of Beds: {{room.numberOfBeds}}</p>
+    <p class="p">Is tv in room: {{room.isTv == true ? 'Yes' : 'No' }}</p>
+    <p class="p">Is toilet in room: {{room.isToilet == true ? 'Yes' : 'No' }}</p>
+    <p class="p">Start of reservation: {{reservation.startReservation | date: 'dd/MM/yyyy'}}</p>
+    <p class="p">End of reservation: {{reservation.endReservation | date: 'dd/MM/yyyy'}}</p>
+    <p class="price">The full Price is {{calculatePrice()}} PLN</p>
+  </div>
+</div>
+  <button class="btn btn-lg btn-success">Accept</button>
+  <button class="btn btn-lg btn-danger float-right">Cancel</button>
+</div>

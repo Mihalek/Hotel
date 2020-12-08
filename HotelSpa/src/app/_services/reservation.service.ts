@@ -17,7 +17,7 @@ export class ReservationService {
  }
 
 reserve(model: any){
-  return this.http.post(this.baseUrl+'/reserve',model);
+  return this.http.post(this.baseUrl+'/reserve', model);
 }
 
 sendStartDate(startdate: any){

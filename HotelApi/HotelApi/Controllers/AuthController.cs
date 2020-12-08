@@ -76,7 +76,7 @@ namespace HotelApi.Controllers
                 Surname = userForRegisterDTO.Surname,
                 Address = userForRegisterDTO.Address,
                 Email = userForRegisterDTO.Email,
-                DateOfBirth = userForRegisterDTO.DateOfBirth.AddHours(1),
+                DateOfBirth = userForRegisterDTO.DateOfBirth.ToLocalTime(),
                 Role = "client"
             };
 

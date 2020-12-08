@@ -23,7 +23,6 @@ namespace HotelApi.Controllers
         public async Task<IActionResult> GetAsync()
         {
             var clients = await userService.BrowseAsync();
-            await userService.AddAsync("Wojtek", "Kowalski");
             return Ok(clients);
         }
     }

@@ -5,8 +5,6 @@ import { ReservationService } from '../_services/reservation.service';
 import { RoomService } from '../_services/room.service';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { AcceptreserveComponent } from '../acceptreserve/acceptreserve.component';
-import { Subscription } from 'rxjs';
-import {MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { AuthService } from '../_services/auth.service';
 
 @Component({
@@ -45,17 +43,22 @@ export class RoomsComponent implements OnInit {
   reserveRoom(room: Room) {
     this.reservationToAdd = {
       idOfRoom : room.id,
-      idOfUser : this.authService.decodedToken.nameid,
+      idOfUser : +this.authService.decodedToken.nameid,
       dateOfReservation : new Date(),
       startReservation : this.startDate,
       endReservation : this.endDate
     };
-    //console.log(this.reservationToAdd);
+
+
     this.dialog.open(AcceptreserveComponent,{
+      disableClose : true,
       width: '80%',
       height: '80%',
       data: this.reservationToAdd
     });
+
+    
+
   }
 
 }

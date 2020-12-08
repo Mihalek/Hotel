@@ -10,14 +10,28 @@ import { ReservationService } from '../_services/reservation.service';
 export class SearchroomComponent implements OnInit {
   startDate : any;
   endDate : any;
-  constructor(private reservationService : ReservationService) { }
+  minDate1 : Date;
+  minDate2 : Date;
+  constructor(private reservationService : ReservationService) { 
+    this.minDate1 = new Date();
+    this.minDate2 = new Date(this.minDate1.getTime() + (1000 * 60 * 60 * 24));
+  }
 
   ngOnInit(): void {
     
   }
+  
+
+  isFirstDayNotEmpty() : boolean {
+    if(this.startDate > 0){
+    return false;
+  }
+    return true;
+}
 
   changeStartDate(){
     this.reservationService.sendStartDate(this.startDate);
+    this.minDate2 = new Date(this.startDate.getTime() + (1000 * 60 * 60 * 24));
   }
 
   changeEndDate(){

@@ -18,7 +18,6 @@ export class NavComponent implements OnInit {
   }
   loggedIn(){
     return this.authService.loggedIn();
-    
   }
   
   logout(){
@@ -28,7 +27,7 @@ export class NavComponent implements OnInit {
   }
   login(){
       this.authService.login(this.model).subscribe(next => {
-        console.log('You are logged in');
+        console.log(this.loggedIn())
         this.router.navigate(["register"]);
       }, error => {
         console.log('error of login');

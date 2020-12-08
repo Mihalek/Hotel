@@ -28,12 +28,13 @@ namespace HotelApi.Controllers
         {
             Reservation reservation = new Reservation
             {
-                DateOfReservation = reservationToAddDTO.DateOfReservation,
-                StartReservation = reservationToAddDTO.StartReservation,
-                EndReservation = reservationToAddDTO.EndReservation,
+                DateOfReservation = reservationToAddDTO.DateOfReservation.ToLocalTime(),
+                StartReservation = reservationToAddDTO.StartReservation.ToLocalTime(),
+                EndReservation = reservationToAddDTO.EndReservation.ToLocalTime(),
                 IdOfRoom = reservationToAddDTO.IdOfRoom,
                 IdOfUser = reservationToAddDTO.IdOfUser,
-                IsCanceled = false
+                IsCanceled = false,
+                IsAccepted = false
             };
 
             await reservationService.AddAsync(reservation);

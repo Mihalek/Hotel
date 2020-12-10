@@ -11,5 +11,8 @@ namespace HotelApi.IServices
         Task<IEnumerable<RoomDTO>> BrowseAsync();
         Task<RoomDTO> GetAsync(int id);
         Task DeleteAsync(int id);
+        Task<IEnumerable<RoomDTO>> BrowseFreeRooms(DateTime startDate, DateTime endDate);
+
+
     }
 }

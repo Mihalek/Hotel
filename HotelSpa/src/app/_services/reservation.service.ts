@@ -11,6 +11,7 @@ export class ReservationService {
 
   startDateOfReserve = new Subject<any>();
   endDateOfReserve = new Subject<any>();
+  clickChange = new Subject<any>();
   baseUrl = environment.apiUrl + 'reservations';
   constructor(private http : HttpClient) { 
 
@@ -33,6 +34,15 @@ receiveStartDate(): Observable<any> {
 receiveEndDate(): Observable<any> {
   return this.endDateOfReserve.asObservable();
 }
+
+sendClickSearch(){
+ return this.clickChange.next();
+}
+
+receiveClickSearch(): Observable<any> {
+  return this.clickChange.asObservable();
+}
+
 
 
 

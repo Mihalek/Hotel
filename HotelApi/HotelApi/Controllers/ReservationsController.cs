@@ -29,8 +29,8 @@ namespace HotelApi.Controllers
             Reservation reservation = new Reservation
             {
                 DateOfReservation = reservationToAddDTO.DateOfReservation.ToLocalTime(),
-                StartReservation = reservationToAddDTO.StartReservation.ToLocalTime(),
-                EndReservation = reservationToAddDTO.EndReservation.ToLocalTime(),
+                StartReservation = reservationToAddDTO.StartReservation.ToLocalTime().AddHours(12),
+                EndReservation = reservationToAddDTO.EndReservation.ToLocalTime().AddHours(10),
                 IdOfRoom = reservationToAddDTO.IdOfRoom,
                 IdOfUser = reservationToAddDTO.IdOfUser,
                 IsCanceled = false,

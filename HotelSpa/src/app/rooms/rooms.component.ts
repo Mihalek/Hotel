@@ -26,10 +26,15 @@ export class RoomsComponent implements OnInit {
     this.reservationService.receiveEndDate().subscribe((sub2)=>{
       this.endDate=sub2;
     });
+    this.reservationService.receiveClickSearch().subscribe((sub3) =>{
+      this.loadFreeRooms();
+    })
+
+
   }
 
   ngOnInit(){
-    this.loadRooms();
+    //this.loadRooms();
   }
   loadRooms(){
     this.roomService.getRooms().subscribe((rooms: Room[]) =>
@@ -39,6 +44,18 @@ export class RoomsComponent implements OnInit {
         console.log(error);
       })
   }
+
+
+  loadFreeRooms(){
+    console.log('tutaj jestem');
+    this.roomService.getFreeRooms(this.startDate, this.endDate ).subscribe((rooms: Room[]) =>
+     {
+       this.rooms=rooms;
+      }, error => {
+        console.log(error);
+      })
+  }
+
 
   reserveRoom(room: Room) {
     this.reservationToAdd = {

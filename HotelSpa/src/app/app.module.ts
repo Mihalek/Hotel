@@ -24,9 +24,10 @@ import { FormsModule} from '@angular/forms';
 import { AuthService } from './_services/auth.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { AcceptreserveComponent } from './acceptreserve/acceptreserve.component';
+import { ReservationslistComponent } from './reservationslist/reservationslist.component';
 
 @NgModule({
-  declarations: [	
+  declarations: [		
     AppComponent,
     NavComponent,
     RegisterComponent,
@@ -39,7 +40,8 @@ import { AcceptreserveComponent } from './acceptreserve/acceptreserve.component'
     AddressComponent,
     ReserveroomComponent,
     SearchroomComponent,
-      AcceptreserveComponent
+      AcceptreserveComponent,
+      ReservationslistComponent
    ],
   imports: [
     BrowserModule,

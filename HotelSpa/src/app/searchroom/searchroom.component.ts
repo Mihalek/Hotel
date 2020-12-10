@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ReservationService } from '../_services/reservation.service';
 
+
 @Component({
   selector: 'app-searchroom',
   templateUrl: './searchroom.component.html',
@@ -39,6 +40,6 @@ export class SearchroomComponent implements OnInit {
   }
 
   Search(){
-
+    this.reservationService.sendClickSearch();
   }
 }

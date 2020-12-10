@@ -16,6 +16,10 @@ export class RoomService {
   getRooms() : Observable<Room[]> {
     return this.http.get<Room[]>(this.baseUrl +'rooms');
   }
+
+  getFreeRooms(startDate: Date, endDate: Date) : Observable<Room[]> {
+    return this.http.get<Room[]>(this.baseUrl +'rooms/'+startDate.toISOString()+'/'+endDate.toISOString());
+  }
   getRoom(id: number) : Observable<Room> {
     return this.http.get<Room>(this.baseUrl+ 'rooms/'+id);
   }

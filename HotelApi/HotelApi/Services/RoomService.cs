@@ -42,5 +42,17 @@ namespace HotelApi.Services
             var room = await dataContext.Rooms.FirstOrDefaultAsync(x => x.Id == id);
             return mapper.Map<RoomDTO>(room);
         }
+
+        public async Task<IEnumerable<RoomDTO>> BrowseFreeRooms(DateTime startDate, DateTime endDate)
+        {
+            var reservatedRooms = await dataContext.Reservations
+                .Where(x => (x.StartReservation >= startDate && x.StartReservation<=endDate) || (x.EndReservation >= startDate && x.EndReservation <= endDate))
+                .Select(x=>x.IdOfRoom).Distinct().ToListAsync();
+            var rooms = dataContext.Rooms.Where(y => !reservatedRooms.Contains(y.Id));
+
+            return mapper.Map<IEnumerable<RoomDTO>>(rooms);
+        }
+
+
     }
 }

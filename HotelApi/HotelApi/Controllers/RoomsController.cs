@@ -34,6 +34,13 @@ namespace HotelApi.Controllers
             return Ok(room);
         }
 
+        [HttpGet("{startDate}/{endDate}")]
+
+        public async Task<IActionResult> GetFreeRoomsAsync(DateTime startDate, DateTime endDate)
+        {  
+            var freeRooms = await roomService.BrowseFreeRooms(startDate.AddHours(12), endDate.AddHours(10));
+            return Ok(freeRooms);
+        }
 
     }
 }

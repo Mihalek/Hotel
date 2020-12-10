@@ -5,6 +5,7 @@ import { Inject } from '@angular/core';
 import { ReservationToAdd } from '../_models/reservationToAdd';
 import { RoomService } from '../_services/room.service';
 import { ReservationService } from '../_services/reservation.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-acceptreserve',
@@ -15,7 +16,7 @@ export class AcceptreserveComponent implements OnInit {
   room: Room;
   reservation: ReservationToAdd;
   constructor(private reservationService: ReservationService,
-   @Inject(MAT_DIALOG_DATA) public data: any, private roomService : RoomService, private dialogRef: MatDialogRef<AcceptreserveComponent>) {
+   @Inject(MAT_DIALOG_DATA) public data: any,private router: Router, private roomService : RoomService, private dialogRef: MatDialogRef<AcceptreserveComponent>) {
     this.reservation = data;
     this.roomService.getRoom(this.reservation.idOfRoom).subscribe(
      (sub) => {
@@ -35,6 +36,8 @@ export class AcceptreserveComponent implements OnInit {
      console.log(this.reservation);
     this.reservationService.reserve(this.reservation).subscribe(() =>{
       console.log('congratulation, you reserved the room');
+      this.router.navigate(['/reservations']);
+
     }, error =>{
       console.log(error);
     });

@@ -40,9 +40,15 @@ namespace HotelApi.Controllers
             await reservationService.AddAsync(reservation);
             return Ok();
         }
-        
+        [HttpGet("{idOfUser}")]
+        public async Task<IActionResult> GetAsync(int idOfUser)
+        {
+            var reservations = await reservationService.BrowseAsyncOfUser(idOfUser);
+            return Ok(reservations);
+        }
 
-        
+
+
 
 
     }

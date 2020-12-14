@@ -25,6 +25,9 @@ import { AuthService } from './_services/auth.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { AcceptreserveComponent } from './acceptreserve/acceptreserve.component';
 import { ReservationslistComponent } from './reservationslist/reservationslist.component';
+import { MatTableModule} from '@angular/material/table'
+
+
 
 @NgModule({
   declarations: [		
@@ -52,8 +55,8 @@ import { ReservationslistComponent } from './reservationslist/reservationslist.c
     MatInputModule,
     HttpClientModule,
     FormsModule,
-    MatDialogModule
-
+    MatDialogModule,
+    MatTableModule
   ],
   providers: [
     RoomService,

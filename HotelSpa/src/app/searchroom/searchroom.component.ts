@@ -11,11 +11,13 @@ import { ReservationService } from '../_services/reservation.service';
 export class SearchroomComponent implements OnInit {
   startDate : any;
   endDate : any;
+  flagToRefresh: boolean;
   minDate1 : Date;
   minDate2 : Date;
   constructor(private reservationService : ReservationService) { 
     this.minDate1 = new Date();
     this.minDate2 = new Date(this.minDate1.getTime() + (1000 * 60 * 60 * 24));
+    this.flagToRefresh=false;
   }
 
   ngOnInit(): void {
@@ -40,6 +42,7 @@ export class SearchroomComponent implements OnInit {
   }
 
   Search(){
+    this.flagToRefresh=true;
     this.reservationService.sendClickSearch();
   }
 }

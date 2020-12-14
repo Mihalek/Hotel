@@ -15,6 +15,7 @@ import { AuthService } from '../_services/auth.service';
 export class RoomsComponent implements OnInit {
 
   rooms: Room[];
+  flagToRefresh: boolean;
   roomToReserve: Room;
   startDate :any;
   endDate: any
@@ -47,7 +48,6 @@ export class RoomsComponent implements OnInit {
 
 
   loadFreeRooms(){
-    console.log('tutaj jestem');
     this.roomService.getFreeRooms(this.startDate, this.endDate ).subscribe((rooms: Room[]) =>
      {
        this.rooms=rooms;
@@ -69,8 +69,8 @@ export class RoomsComponent implements OnInit {
 
     this.dialog.open(AcceptreserveComponent,{
       disableClose : true,
-      width: '80%',
-      height: '80%',
+      width: '900px',
+      height: '500px',
       data: this.reservationToAdd
     });
 

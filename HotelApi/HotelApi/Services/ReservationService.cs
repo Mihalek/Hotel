@@ -34,6 +34,11 @@ namespace HotelApi.Services
 
             return mapper.Map<IEnumerable<ReservationDTO>>(reservations);
         }
+        public async Task<IEnumerable<ReservationToGetDTO>> BrowseAsyncOfUser(int idOfUser)
+        {
+            var reservations = await dataContext.Reservations.Where(x=> x.IdOfUser== idOfUser).ToListAsync();
+            return mapper.Map<IEnumerable<ReservationToGetDTO>>(reservations);
+        }
 
         public async Task CancelAsync(int id)
         {

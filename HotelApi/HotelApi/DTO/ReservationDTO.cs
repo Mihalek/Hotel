@@ -13,5 +13,6 @@ namespace HotelApi.DTO
         public int IdOfUser { get; set; }
         public int IdOfRoom { get; set; }
         public bool IsCanceled { get; set; }
+        public decimal Price { get; set; }
     }
 }

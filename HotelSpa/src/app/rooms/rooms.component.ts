@@ -63,7 +63,8 @@ export class RoomsComponent implements OnInit {
       idOfUser : +this.authService.decodedToken.nameid,
       dateOfReservation : new Date(),
       startReservation : this.startDate,
-      endReservation : this.endDate
+      endReservation : this.endDate,
+      price: Math.ceil((this.endDate.getTime()-this.startDate.getTime())/(1000 * 3600 * 24)) * room.dayPrice
     };
 
 

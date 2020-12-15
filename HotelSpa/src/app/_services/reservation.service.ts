@@ -26,6 +26,11 @@ reserve(model: any){
   return this.http.post(this.baseUrl+'/reserve', model);
 }
 
+cancelReservation(model : any){
+  return this.http.post(this.baseUrl+'/cancel', model);
+}
+
+
 sendStartDate(startdate: any){
   this.startDateOfReserve.next(startdate);
 }

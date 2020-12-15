@@ -7,4 +7,5 @@ export interface ReservationToGet {
     idOfRoom? : number;
     isCanceled? : boolean;
     isAccepted? : boolean;
+    price?: number;
 }

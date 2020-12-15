@@ -12,5 +12,6 @@ namespace HotelApi.DTO
         public DateTime EndReservation { get; set; }
         public int IdOfUser { get; set; }
         public int IdOfRoom { get; set; }
+        public decimal Price { get; set; }
     }
 }

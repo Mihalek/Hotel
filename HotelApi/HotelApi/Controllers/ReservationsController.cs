@@ -34,12 +34,22 @@ namespace HotelApi.Controllers
                 IdOfRoom = reservationToAddDTO.IdOfRoom,
                 IdOfUser = reservationToAddDTO.IdOfUser,
                 IsCanceled = false,
-                IsAccepted = false
+                IsAccepted = false,
+                Price = reservationToAddDTO.Price
             };
 
             await reservationService.AddAsync(reservation);
             return Ok();
         }
+
+        [HttpPost("cancel")]
+        public async Task<IActionResult> CancelAsync(NumberDTO numberDTO)
+        {
+            await reservationService.CancelAsync(numberDTO.Id);
+            return Ok();
+        }
+
+
         [HttpGet("{idOfUser}")]
         public async Task<IActionResult> GetAsync(int idOfUser)
         {

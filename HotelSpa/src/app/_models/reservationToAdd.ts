@@ -4,4 +4,5 @@ export interface ReservationToAdd {
     endReservation? : Date;
     idOfUser? : number;
     idOfRoom? : number;
+    price?: number;
 }

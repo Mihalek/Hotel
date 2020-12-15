@@ -6,6 +6,10 @@ import { ReservationToAdd } from '../_models/reservationToAdd';
 import { ReservationToGet } from '../_models/reservationToGet';
 import { ReservationService } from '../_services/reservation.service';
 import { AuthService } from '../_services/auth.service';
+import { RoomService } from '../_services/room.service';
+import { Room } from '../_models/room';
+import { Router } from '@angular/router';
+import { NumberModel } from '../_models/numberModel';
 
 @Component({
   selector: 'app-reservationslist',
@@ -21,14 +25,16 @@ import { AuthService } from '../_services/auth.service';
 })
 
 export class ReservationslistComponent implements OnInit{
-
+  number : NumberModel;
   reservations: ReservationToGet[];
-  constructor(private reservationService: ReservationService, private authService : AuthService) {
-
+  rooms: Room[];
+  constructor(private router: Router,private reservationService: ReservationService, private roomService:RoomService, private authService : AuthService) {
+    this.loadResrvations()
+    this.loadRooms();
   }
   loadResrvations(){
 
-    this.reservationService.getReservationsOfUser(this.authService.decodedToken.nameid).subscribe((reservations: ReservationToGet[]) =>
+    this.reservationService.getReservationsOfUser(+this.authService.decodedToken.nameid).subscribe((reservations: ReservationToGet[]) =>
      {
        this.reservations=reservations;
       }, error => {
@@ -36,8 +42,38 @@ export class ReservationslistComponent implements OnInit{
       })
   }
 
+
+  getRoom(id: number) : Room {
+      return this.rooms.find( obj => obj.id===id);    
+  }
+
+  cancelReservation(idOfReservation: number){
+
+    this.number = {
+      id: idOfReservation
+    };
+    this.reservations.find(obj => 
+      obj.id=== idOfReservation
+    ).isCanceled=true;   
+    this.reservationService.cancelReservation(this.number).subscribe(() =>{
+      console.log('You canceled the reservation');
+    }, error =>{
+      console.log(error);
+    });;
+  }
+
+  loadRooms(){
+
+    this.roomService.getRooms().subscribe((rooms: Room[]) =>
+     {
+       this.rooms=rooms;
+      }, error => {
+        console.log(error);
+      })
+  }
+
   ngOnInit(){
-    this.loadResrvations()
+    
   } 
   columnsToDisplay = ['Date of reservation', 'Start reservation', 'End reservation', 'Price'];
   columnsToData = ['dateOfReservation', 'startReservation', 'endReservation', 'Price'];

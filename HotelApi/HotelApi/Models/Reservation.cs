@@ -19,5 +19,6 @@ namespace HotelApi.Models
         public int IdOfRoom { get; set; }
         public bool IsCanceled { get; set; }
         public bool IsAccepted { get; set; }
+        public decimal Price { get; set; }
     }
 }

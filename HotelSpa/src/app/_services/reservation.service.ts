@@ -22,12 +22,20 @@ export class ReservationService {
   return this.http.get<ReservationToGet[]>(this.baseUrl +'/'+id);
 }
 
+getReservations() : Observable<ReservationToGet[]> {
+  return this.http.get<ReservationToGet[]>(this.baseUrl);
+}
+
 reserve(model: any){
   return this.http.post(this.baseUrl+'/reserve', model);
 }
 
 cancelReservation(model : any){
   return this.http.post(this.baseUrl+'/cancel', model);
+}
+
+acceptReservation(model : any){
+  return this.http.post(this.baseUrl+'/accept', model);
 }
 
 

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminreservationslistComponent } from './adminreservationslist/adminreservationslist.component';
 import { ContactComponent } from './contact/contact.component';
 import { RegisterComponent } from './register/register.component';
 import { ReservationslistComponent } from './reservationslist/reservationslist.component';
@@ -15,6 +16,7 @@ const routes: Routes = [
   {path: 'rooms' , component: RoomsComponent},
   {path: 'services' , component: ServicesComponent},
   {path: 'contact' , component: ContactComponent},
+  {path: 'reservationsmanage' , component: AdminreservationslistComponent},
   {path: 'reserveroom' , component: ReserveroomComponent, canActivate: [AuthGuard]}
 ];
 

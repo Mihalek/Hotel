@@ -49,6 +49,13 @@ namespace HotelApi.Controllers
             return Ok();
         }
 
+        [HttpPost("accept")]
+        public async Task<IActionResult> AcceptAsync(NumberDTO numberDTO)
+        {
+            await reservationService.AcceptAsync(numberDTO.Id);
+            return Ok();
+        }
+
 
         [HttpGet("{idOfUser}")]
         public async Task<IActionResult> GetAsync(int idOfUser)
@@ -57,6 +64,13 @@ namespace HotelApi.Controllers
             return Ok(reservations);
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> GetAllAsync()
+        {
+            var reservations = await reservationService.BrowseAsync();
+            return Ok(reservations);
+        }
 
 
 

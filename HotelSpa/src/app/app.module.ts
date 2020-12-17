@@ -26,11 +26,11 @@ import { AuthGuard } from './_guards/auth.guard';
 import { AcceptreserveComponent } from './acceptreserve/acceptreserve.component';
 import { ReservationslistComponent } from './reservationslist/reservationslist.component';
 import { MatTableModule} from '@angular/material/table'
-
+import { AdminreservationslistComponent } from './adminreservationslist/adminreservationslist.component';
 
 
 @NgModule({
-  declarations: [		
+  declarations: [				
     AppComponent,
     NavComponent,
     RegisterComponent,
@@ -43,8 +43,9 @@ import { MatTableModule} from '@angular/material/table'
     AddressComponent,
     ReserveroomComponent,
     SearchroomComponent,
-      AcceptreserveComponent,
-      ReservationslistComponent
+    AcceptreserveComponent,
+    ReservationslistComponent,
+      AdminreservationslistComponent
    ],
   imports: [
     BrowserModule,
@@ -56,7 +57,7 @@ import { MatTableModule} from '@angular/material/table'
     HttpClientModule,
     FormsModule,
     MatDialogModule,
-    MatTableModule
+    MatTableModule,
   ],
   providers: [
     RoomService,

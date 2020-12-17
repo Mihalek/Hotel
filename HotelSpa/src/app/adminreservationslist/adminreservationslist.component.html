@@ -1,20 +1,20 @@
 <div class="container">
-  <h1>List of your Reservations</h1>
+  <h1>List of all reservations</h1>
   <div class="row">
-    <div class="col-sm-8 offset-2">
+    <div class="col-sm-10 offset-1">
       <table mat-table [dataSource]="reservations" multiTemplateDataRows>
         <ng-container matColumnDef="dateOfReservation">
-          <th mat-header-cell *matHeaderCellDef> Date Of Reservation </th>
+          <th mat-header-cell *matHeaderCellDef> Reservation Date </th>
           <td mat-cell *matCellDef="let element"> {{element?.dateOfReservation | date:'dd.MM.y  HH:mm:ss'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="startReservation">
-          <th mat-header-cell *matHeaderCellDef> Start of Reservation </th>
+          <th mat-header-cell *matHeaderCellDef> Start Reservation </th>
           <td mat-cell *matCellDef="let element"> {{element?.startReservation | date:'dd.MM.y  HH:mm:ss'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="endReservation">
-          <th mat-header-cell *matHeaderCellDef> End of Reservation </th>
+          <th mat-header-cell *matHeaderCellDef> End Reservation </th>
           <td mat-cell *matCellDef="let element"> {{element?.endReservation | date:'dd.MM.y  HH:mm:ss'}} </td>
         </ng-container>
 
@@ -22,16 +22,26 @@
           <th mat-header-cell *matHeaderCellDef> Price </th>
           <td mat-cell *matCellDef="let element">{{element?.price}} PLN</td>
         </ng-container>
-        
+
+        <ng-container matColumnDef="isAccepted">
+          <th mat-header-cell *matHeaderCellDef> Accepted </th>
+          <td mat-cell *matCellDef="let element">{{element?.isAccepted == true ? 'Yes' : 'No' }}</td>
+        </ng-container>
+        <ng-container matColumnDef="isCanceled">
+          <th mat-header-cell *matHeaderCellDef> Canceled </th>
+          <td mat-cell *matCellDef="let element">{{element?.isCanceled == true ? 'Yes' : 'No' }}</td>
+        </ng-container>
+
         <ng-container matColumnDef="expandedDetail">
-          <td [ngStyle]="{'background-color':(element.isCanceled === true) ? 'pink' : 'lightgreen' }" mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+          <td [ngStyle]="{'background-color':(element.isAccepted === true) ? 'lightgreen' : '#efefef' }" mat-cell
+            *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
             <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
               <div class="container" *ngIf="rooms && rooms[0]">
                 <div class=row>
                   <div class="col-sm-6 extend">
                     <img src={{getRoom(element.idOfRoom).urlOfPhoto}} width="80%" alt="no photo">
                   </div>
-              
+
                   <div class="col-sm-6">
                     <div class="row">
                       <div class="col-sm-7">
@@ -48,8 +58,11 @@
                     </div>
                     <br>
                     <br>
-                    <button (click)="cancelReservation(element.id)" class="btn btn-danger float-right">Cancel reservation</button>
-                  </div> 
+                    <button (click)="cancelReservation(element.id)" class="btn btn-danger">Cancel
+                      reservation</button>
+                    <button (click)="acceptReservation(element.id)" class="btn btn-success float-right">Accept
+                      reservation</button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -58,7 +71,7 @@
 
 
         <tr mat-header-row *matHeaderRowDef="columnsToData;"></tr>
-        <tr [ngStyle]="{'background-color':(element.isCanceled === true) ? 'pink' : 'lightgreen' }" mat-row *matRowDef="let element; columns: columnsToData;" class="example-element-row"
+        <tr [ngStyle]="{'background-color':(element.isAccepted === true) ? 'lightgreen' : '#efefef' }" mat-row *matRowDef="let element; columns: columnsToData;" class="example-element-row"
           [class.example-expanded-row]="expandedElement === element"
           (click)="expandedElement = expandedElement === element ? null : element">
         </tr>

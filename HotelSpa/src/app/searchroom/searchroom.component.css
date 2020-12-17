@@ -2,6 +2,11 @@ mat-form-field {
     margin-right: 12px;
   }
 
+
+  .firstday{
+  padding-left: 10%;
+  }
+
 .searchroom {
   border-style: double;
   padding-left: 2%;

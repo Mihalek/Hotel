@@ -7,6 +7,7 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+
 CREATE TABLE [dbo].[Reservations](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
 	[DateOfReservation] [datetime2](7) NOT NULL,
@@ -15,7 +16,8 @@ CREATE TABLE [dbo].[Reservations](
 	[IdOfUser] [int] NOT NULL,
 	[IdOfRoom] [int] NOT NULL,
 	[IsCanceled] [bit] NOT NULL,
-	[IsAccepted] [bit] NOT NULL
+	[IsAccepted] [bit] NOT NULL,
+	[Price] [decimal](8, 2) NOT NULL
 ) ON [PRIMARY]
 
 

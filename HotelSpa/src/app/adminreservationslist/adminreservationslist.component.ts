@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { ReservationToGet } from '../_models/reservationToGet';
+import { Room } from '../_models/room';
+import { NumberModel } from '../_models/numberModel';
 import { ReservationService } from '../_services/reservation.service';
 import { AuthService } from '../_services/auth.service';
 import { RoomService } from '../_services/room.service';
-import { Room } from '../_models/room';
-import { Router } from '@angular/router';
-import { NumberModel } from '../_models/numberModel';
-
 @Component({
-  selector: 'app-reservationslist',
-  templateUrl: './reservationslist.component.html',
-  styleUrls: ['./reservationslist.component.scss'],
+  selector: 'app-Adminreservationslist',
+  templateUrl: './Adminreservationslist.component.html',
+  styleUrls: ['./Adminreservationslist.component.scss'],
   animations: [
     trigger('detailExpand', [
       state('collapsed', style({ height: '0px', minHeight: '0' })),
@@ -21,26 +19,41 @@ import { NumberModel } from '../_models/numberModel';
   ],
 })
 
-export class ReservationslistComponent implements OnInit {
+export class AdminreservationslistComponent implements OnInit {
   number: NumberModel;
   reservations: ReservationToGet[];
   rooms: Room[];
-  constructor(private router: Router, private reservationService: ReservationService, private roomService: RoomService, private authService: AuthService) {
-    this.loadResrvations()
+  constructor(private reservationService : ReservationService, private roomService : RoomService) {
+    this.loadResrvations();
     this.loadRooms();
-  }
+   }
   loadResrvations() {
-
-    this.reservationService.getReservationsOfUser(+this.authService.decodedToken.nameid).subscribe((reservations: ReservationToGet[]) => {
+    this.reservationService.getReservations().subscribe((reservations: ReservationToGet[]) => {
       this.reservations = reservations;
     }, error => {
       console.log(error);
     })
   }
 
-
   getRoom(id: number): Room {
     return this.rooms.find(obj => obj.id === id);
+  }
+
+  acceptReservation(idOfReservation: number) {
+    console.log(idOfReservation);
+    this.number = {
+      id: idOfReservation
+    };
+    this.reservationService.acceptReservation(this.number).subscribe(() => {
+      console.log('You accepted the reservation');
+    }, error => {
+      console.log(error);
+      return;
+    });;
+
+    this.reservations.find(obj =>
+      obj.id === idOfReservation
+    ).isAccepted = true;
   }
 
   cancelReservation(idOfReservation: number) {
@@ -59,7 +72,6 @@ export class ReservationslistComponent implements OnInit {
       obj.id === idOfReservation
     ).isCanceled = true;
   }
-
   loadRooms() {
     this.roomService.getRooms().subscribe((rooms: Room[]) => {
       this.rooms = rooms;
@@ -67,12 +79,11 @@ export class ReservationslistComponent implements OnInit {
       console.log(error);
     })
   }
-
   ngOnInit() {
-
   }
-  columnsToDisplay = ['Date of reservation', 'Start reservation', 'End reservation', 'Price'];
-  columnsToData = ['dateOfReservation', 'startReservation', 'endReservation', 'Price'];
+  columnsToDisplay = ['Date of reservation', 'Start reservation', 'End reservation', 'Price','Accepted','Canceled'];
+  columnsToData = ['dateOfReservation', 'startReservation', 'endReservation', 'Price','isAccepted','isCanceled'];
   expandedElement: ReservationToGet | null;
 
 }
+

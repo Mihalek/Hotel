@@ -28,11 +28,11 @@ namespace HotelApi.Services
             await dataContext.SaveChangesAsync();
         }
 
-        public async Task<IEnumerable<ReservationDTO>> BrowseAsync()
+        public async Task<IEnumerable<ReservationToGetDTO>> BrowseAsync()
         {
             var reservations = await dataContext.Reservations.ToListAsync();
 
-            return mapper.Map<IEnumerable<ReservationDTO>>(reservations);
+            return mapper.Map<IEnumerable<ReservationToGetDTO>>(reservations);
         }
         public async Task<IEnumerable<ReservationToGetDTO>> BrowseAsyncOfUser(int idOfUser)
         {
@@ -50,6 +50,17 @@ namespace HotelApi.Services
                 await dataContext.SaveChangesAsync();
             };
             
+        }
+        public async Task AcceptAsync(int id)
+        {
+            var reservation = await dataContext.Reservations.FirstOrDefaultAsync(x => x.Id == id);
+            if (reservation != null)
+            {
+                reservation.IsAccepted = true;
+                dataContext.Reservations.Update(reservation);
+                await dataContext.SaveChangesAsync();
+            };
+
         }
 
         public async Task DeleteAsync(int id)

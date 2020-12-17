@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, SimpleChanges } from '@angular/core';
 import { ReservationToAdd } from '../_models/reservationToAdd';
 import { Room } from '../_models/room';
 import { ReservationService } from '../_services/reservation.service';
@@ -20,21 +20,23 @@ export class RoomsComponent implements OnInit {
   startDate :any;
   endDate: any
   reservationToAdd : ReservationToAdd;
+  blockReserve: boolean;
   constructor(private dialog: MatDialog , private authService : AuthService,private roomService: RoomService, private reservationService : ReservationService) {
     this.reservationService.receiveStartDate().subscribe((sub)=>{
       this.startDate=sub;
+      if(this.endDate > this.startDate){
+      this.loadFreeRooms();
+      }
     });
     this.reservationService.receiveEndDate().subscribe((sub2)=>{
       this.endDate=sub2;
-    });
-    this.reservationService.receiveClickSearch().subscribe((sub3) =>{
       this.loadFreeRooms();
-    })
-
+    });
 
   }
 
   ngOnInit(){
+    this.blockReserve=true;
     //this.loadRooms();
   }
   loadRooms(){
@@ -46,10 +48,10 @@ export class RoomsComponent implements OnInit {
       })
   }
 
-
   loadFreeRooms(){
     this.roomService.getFreeRooms(this.startDate, this.endDate ).subscribe((rooms: Room[]) =>
      {
+      this.blockReserve=false;
        this.rooms=rooms;
       }, error => {
         console.log(error);

@@ -46,7 +46,7 @@ namespace HotelApi.Services
         public async Task<IEnumerable<RoomDTO>> BrowseFreeRooms(DateTime startDate, DateTime endDate)
         {
             var reservatedRooms = await dataContext.Reservations
-                .Where(x => (x.StartReservation >= startDate && x.StartReservation<=endDate) || (x.EndReservation >= startDate && x.EndReservation <= endDate))
+                .Where(x => (x.StartReservation >= startDate && x.StartReservation<=endDate && x.IsCanceled==false) || (x.EndReservation >= startDate && x.EndReservation <= endDate && x.IsCanceled == false))
                 .Select(x=>x.IdOfRoom).Distinct().ToListAsync();
             var rooms = dataContext.Rooms.Where(y => !reservatedRooms.Contains(y.Id));
 

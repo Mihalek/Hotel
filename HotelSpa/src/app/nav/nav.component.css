@@ -2,6 +2,9 @@ a {
     text-transform: uppercase;
     color: white;    
 }
+.messages{
+    margin-right: 20px;
+}
 
 ul {
     padding-top: 10px;

@@ -4,7 +4,7 @@
       <h2 class="textinform">Find free room by date of your visit</h2>
       <form>
         <div class="form-group searchroom">
-          <mat-form-field>
+          <mat-form-field class="firstday">
             <mat-label>Choose a first day</mat-label>
             <input #startdate [min]="minDate1" (dateChange)="changeStartDate()" [(ngModel)]="startDate" name="startdate" matInput [matDatepicker]="picker1">
             <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
@@ -16,7 +16,6 @@
             <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
             <mat-datepicker #picker2></mat-datepicker>
           </mat-form-field>
-          <button (click)="Search()" type="submit" class="btn btn-primary">Search</button>
         </div>
       </form>
     </div>

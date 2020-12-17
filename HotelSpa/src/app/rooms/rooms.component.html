@@ -32,7 +32,7 @@
                         <p class="price">Day Price for {{room.numberOfPeople}} people: {{room.dayPrice}} PLN</p>
                     </div>
                     <div class="col-sm">
-                        <button (click)="reserveRoom(room)" class="btn btn-lg btn-warning">Reserve this room</button>
+                        <button [disabled]="this.blockReserve" (click)="reserveRoom(room)" class="btn btn-lg btn-warning">Reserve this room</button>
                     </div>
                 </div>
             </div>

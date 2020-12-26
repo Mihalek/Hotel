@@ -25,5 +25,12 @@ namespace HotelApi.Controllers
             var clients = await userService.BrowseAsync();
             return Ok(clients);
         }
+
+        [HttpPost("changerole")]
+        public async Task<IActionResult> ChangeRoleOfUser(int id, string role)
+        {
+            await userService.ChangeRoleAsync(id, role);
+            return Ok();
+        }
     }
 }

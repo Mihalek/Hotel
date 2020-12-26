@@ -27,10 +27,11 @@ import { AcceptreserveComponent } from './acceptreserve/acceptreserve.component'
 import { ReservationslistComponent } from './reservationslist/reservationslist.component';
 import { MatTableModule} from '@angular/material/table'
 import { AdminreservationslistComponent } from './adminreservationslist/adminreservationslist.component';
+import { AdminmessagesComponent } from './adminmessages/adminmessages.component';
 
 
 @NgModule({
-  declarations: [				
+  declarations: [					
     AppComponent,
     NavComponent,
     RegisterComponent,
@@ -45,7 +46,8 @@ import { AdminreservationslistComponent } from './adminreservationslist/adminres
     SearchroomComponent,
     AcceptreserveComponent,
     ReservationslistComponent,
-      AdminreservationslistComponent
+      AdminreservationslistComponent,
+      AdminmessagesComponent
    ],
   imports: [
     BrowserModule,

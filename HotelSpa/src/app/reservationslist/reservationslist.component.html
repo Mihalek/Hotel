@@ -24,7 +24,7 @@
         </ng-container>
         
         <ng-container matColumnDef="expandedDetail">
-          <td [ngStyle]="{'background-color':(element.isCanceled === true) ? 'pink' : 'lightgreen' }" mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+          <td [ngStyle]="{'background-color':(element.isAccepted === true) ? 'lightgreen' : (element.isCanceled === true) ? 'pink': '#efefef'  }" mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
             <div class="example-element-detail" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
               <div class="container" *ngIf="rooms && rooms[0]">
                 <div class=row>
@@ -58,7 +58,7 @@
 
 
         <tr mat-header-row *matHeaderRowDef="columnsToData;"></tr>
-        <tr [ngStyle]="{'background-color':(element.isCanceled === true) ? 'pink' : 'lightgreen' }" mat-row *matRowDef="let element; columns: columnsToData;" class="example-element-row"
+        <tr [ngStyle]="{'background-color':(element.isAccepted === true) ? 'lightgreen' : (element.isCanceled === true) ? 'pink': '#efefef'  }" mat-row *matRowDef="let element; columns: columnsToData;" class="example-element-row"
           [class.example-expanded-row]="expandedElement === element"
           (click)="expandedElement = expandedElement === element ? null : element">
         </tr>

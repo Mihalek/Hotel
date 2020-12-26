@@ -24,10 +24,10 @@ export class AdminreservationslistComponent implements OnInit {
   reservations: ReservationToGet[];
   rooms: Room[];
   constructor(private reservationService : ReservationService, private roomService : RoomService) {
-    this.loadResrvations();
+    this.loadReservations();
     this.loadRooms();
    }
-  loadResrvations() {
+  loadReservations() {
     this.reservationService.getReservations().subscribe((reservations: ReservationToGet[]) => {
       this.reservations = reservations;
     }, error => {
@@ -54,6 +54,9 @@ export class AdminreservationslistComponent implements OnInit {
     this.reservations.find(obj =>
       obj.id === idOfReservation
     ).isAccepted = true;
+    this.reservations.find(obj =>
+      obj.id === idOfReservation
+    ).isCanceled = false;
   }
 
   cancelReservation(idOfReservation: number) {
@@ -71,6 +74,10 @@ export class AdminreservationslistComponent implements OnInit {
     this.reservations.find(obj =>
       obj.id === idOfReservation
     ).isCanceled = true;
+    this.reservations.find(obj =>
+      obj.id === idOfReservation
+    ).isAccepted = false;
+
   }
   loadRooms() {
     this.roomService.getRooms().subscribe((rooms: Room[]) => {

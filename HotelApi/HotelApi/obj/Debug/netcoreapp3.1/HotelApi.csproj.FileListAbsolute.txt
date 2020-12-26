@@ -183,3 +183,4 @@ C:\Users\Mihalek\Desktop\hotel\HotelApi\HotelApi\obj\Debug\netcoreapp3.1\HotelAp
 C:\Users\Mihalek\Desktop\hotel\HotelApi\HotelApi\obj\Debug\netcoreapp3.1\HotelApi.dll
 C:\Users\Mihalek\Desktop\hotel\HotelApi\HotelApi\obj\Debug\netcoreapp3.1\HotelApi.pdb
 C:\Users\Mihalek\Desktop\hotel\HotelApi\HotelApi\obj\Debug\netcoreapp3.1\HotelApi.genruntimeconfig.cache
+C:\Users\Mihalek\Desktop\hotel\HotelApi\HotelApi\obj\Debug\netcoreapp3.1\HotelApi.csprojAssemblyReference.cache

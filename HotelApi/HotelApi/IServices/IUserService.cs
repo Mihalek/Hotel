@@ -13,6 +13,7 @@ namespace HotelApi.IServices
         Task<UserForLoginDTO> GetAsync(int id);
         Task AddAsync(string name, string surname);
         Task DeleteAsync(int id);
+        Task ChangeRoleAsync(int id, string role);
 
     }
 }

@@ -58,6 +58,9 @@ export class ReservationslistComponent implements OnInit {
     this.reservations.find(obj =>
       obj.id === idOfReservation
     ).isCanceled = true;
+    this.reservations.find(obj =>
+      obj.id === idOfReservation
+    ).isAccepted = false;
   }
 
   loadRooms() {

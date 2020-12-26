@@ -7,6 +7,18 @@ GO
 SET QUOTED_IDENTIFIER ON
 GO
 
+CREATE TABLE [dbo].[Messages](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[DateOfSend] [datetime2](7) NOT NULL,
+	[Title] [varchar](50) NOT NULL,
+	[Name] [varchar](50) NOT NULL,
+	[Surname] [varchar](50) NOT NULL,
+	[EmailAddress] [varchar](100) NOT NULL,
+	[MessageContent] [varchar](max) NOT NULL,
+	[IsRead] [bit] NOT NULL
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
 
 CREATE TABLE [dbo].[Reservations](
 	[Id] [int] IDENTITY(1,1) NOT NULL,

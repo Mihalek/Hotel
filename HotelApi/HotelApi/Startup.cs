@@ -30,6 +30,7 @@ namespace HotelApi
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IAuthService, AuthService>();
             services.AddScoped<IRoomService, RoomService>();
+            services.AddScoped<IMessageService, MessageService>();
             services.AddScoped<IReservationService, ReservationService>();
             services.AddSingleton(AutoMapperConfig.Initialize());
             services.AddDbContext<DataContext>(x => x.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

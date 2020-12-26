@@ -46,6 +46,7 @@ namespace HotelApi.Services
             if (reservation != null)
             {
                 reservation.IsCanceled = true;
+                reservation.IsAccepted = false;
                 dataContext.Reservations.Update(reservation);
                 await dataContext.SaveChangesAsync();
             };
@@ -57,6 +58,7 @@ namespace HotelApi.Services
             if (reservation != null)
             {
                 reservation.IsAccepted = true;
+                reservation.IsCanceled = false;
                 dataContext.Reservations.Update(reservation);
                 await dataContext.SaveChangesAsync();
             };

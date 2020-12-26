@@ -17,6 +17,7 @@ namespace HotelApi.AutoMappers
             cfg.CreateMap<Room, RoomDTO>();
             cfg.CreateMap<Reservation, ReservationDTO>();
             cfg.CreateMap<Reservation, ReservationToGetDTO>();
+            cfg.CreateMap<Message, MessageDTO>();
         }).CreateMapper();
 
     }

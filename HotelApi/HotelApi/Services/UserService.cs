@@ -47,6 +47,19 @@ namespace HotelApi.Services
 
         }
 
+        public async Task ChangeRoleAsync(int id, string role)
+        {
+            var user = await dataContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+            if (user != null)
+            {
+                user.Role = role;
+                dataContext.Users.Update(user);
+                await dataContext.SaveChangesAsync();
+            };
+
+        }
+
+
         public async Task<UserForLoginDTO> GetAsync(int id)
         {
             var client = await dataContext.Users.FirstOrDefaultAsync(x => x.Id == id);

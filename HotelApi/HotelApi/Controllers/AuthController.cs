@@ -38,7 +38,8 @@ namespace HotelApi.Controllers
             var claims = new[]
             {
                 new Claim(ClaimTypes.NameIdentifier, userFromService.Id.ToString()),
-                new Claim(ClaimTypes.Name, userFromService.Username)
+                new Claim(ClaimTypes.Name, userFromService.Username),
+                new Claim(ClaimTypes.Role, userFromService.Role)
             };
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config.GetSection("AppSettings:Token").Value));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);

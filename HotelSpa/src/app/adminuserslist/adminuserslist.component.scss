@@ -1,0 +1,30 @@
+table {
+    width: 100%;
+  }
+  
+h1 {
+    text-align: center;
+    margin-top: 2%;
+}
+
+.mat-column-functions{
+  text-align: right;
+  word-wrap: break-word !important;
+  white-space: unset !important;
+  flex: 0 0 28% !important;
+  width: 28% !important;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  }
+  .mat-column-role{
+    width: 10% !important;
+  
+    }
+  .edituserbutton{
+    margin-right: 10%;
+  }

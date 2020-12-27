@@ -21,6 +21,7 @@ login(model: any){
       if(user){
         localStorage.setItem('token', user.token);
         this.decodedToken = this.jwtHelper.decodeToken(user.token);
+        console.log(this.decodedToken);
       }
     }
   ));
@@ -29,6 +30,7 @@ login(model: any){
 register(model: any){
   return this.http.post(this.baseUrl+ '/register',model);
 }
+
 
 loggedIn(){
   const token = localStorage.getItem('token');

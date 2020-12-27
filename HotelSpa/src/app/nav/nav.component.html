@@ -18,9 +18,9 @@
 
   <div class="navbar-collapse order-3 navbar navbar-expand-sm bg-dark">
     <div class="navbar-nav ml-auto">
-      <a *ngIf="loggedIn()"  [routerLink]="['/allusers']" class="nav-link">All Users</a>
-      <a *ngIf="loggedIn()"  [routerLink]="['/reservationsmanage']" class="nav-link">All Reservations</a>
-      <a *ngIf="loggedIn()"  [routerLink]="['/messages']" class="nav-link messages">Messages</a>
+      <a *ngIf="loggedIn() && !(authService.decodedToken?.role ==='client')"  [routerLink]="['/allusers']" class="nav-link">All Users</a>
+      <a *ngIf="loggedIn() && !(authService.decodedToken?.role ==='client')"  [routerLink]="['/reservationsmanage']" class="nav-link">All Reservations</a>
+      <a *ngIf="loggedIn() && !(authService.decodedToken?.role ==='client')"  [routerLink]="['/messages']" class="nav-link messages">Messages</a>
       <div *ngIf="loggedIn()" class="dropdown">
         <button class="btn btn-warning dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown"
           aria-haspopup="true" aria-expanded="false">

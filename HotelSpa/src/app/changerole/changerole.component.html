@@ -1,0 +1,8 @@
+<h2>Select a new role</h2>
+
+<select [(ngModel)]="selected" name="roles" id="roles">
+  <option value="admin">admin</option>
+  <option value="client">client</option>
+</select>
+<button (click)="Cancel()" class="btn btn-danger">Return</button>
+<button (click)="Accept()" class="btn btn-success float-right">Accept</button>

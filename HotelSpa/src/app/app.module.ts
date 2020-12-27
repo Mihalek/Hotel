@@ -28,10 +28,12 @@ import { ReservationslistComponent } from './reservationslist/reservationslist.c
 import { MatTableModule} from '@angular/material/table'
 import { AdminreservationslistComponent } from './adminreservationslist/adminreservationslist.component';
 import { AdminmessagesComponent } from './adminmessages/adminmessages.component';
-
+import { AdminuserslistComponent } from './adminuserslist/adminuserslist.component';
+import { MatPaginatorModule} from '@angular/material/paginator'
+import { ChangeroleComponent } from './changerole/changerole.component';
 
 @NgModule({
-  declarations: [					
+  declarations: [							
     AppComponent,
     NavComponent,
     RegisterComponent,
@@ -47,7 +49,9 @@ import { AdminmessagesComponent } from './adminmessages/adminmessages.component'
     AcceptreserveComponent,
     ReservationslistComponent,
       AdminreservationslistComponent,
-      AdminmessagesComponent
+      AdminmessagesComponent,
+      AdminuserslistComponent,
+      ChangeroleComponent
    ],
   imports: [
     BrowserModule,
@@ -60,6 +64,7 @@ import { AdminmessagesComponent } from './adminmessages/adminmessages.component'
     FormsModule,
     MatDialogModule,
     MatTableModule,
+    MatPaginatorModule
   ],
   providers: [
     RoomService,

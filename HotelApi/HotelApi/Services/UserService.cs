@@ -32,11 +32,11 @@ namespace HotelApi.Services
             await dataContext.SaveChangesAsync();
         }
 
-        public async Task <IEnumerable<UserForLoginDTO>> BrowseAsync()
+        public async Task <IEnumerable<UserToGetDTO>> BrowseAsync()
         {
             var clients = await dataContext.Users.ToListAsync();
 
-            return mapper.Map<IEnumerable<UserForLoginDTO>>(clients);
+            return mapper.Map<IEnumerable<UserToGetDTO>>(clients);
         }
 
         public async Task DeleteAsync(int id)
@@ -50,7 +50,7 @@ namespace HotelApi.Services
         public async Task ChangeRoleAsync(int id, string role)
         {
             var user = await dataContext.Users.FirstOrDefaultAsync(x => x.Id == id);
-            if (user != null)
+            if (user != null && user.Role != "main");
             {
                 user.Role = role;
                 dataContext.Users.Update(user);

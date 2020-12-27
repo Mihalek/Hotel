@@ -1,4 +1,5 @@
 ﻿using HotelApi.Data;
+using HotelApi.DTO;
 using HotelApi.IServices;
 using HotelApi.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 namespace HotelApi.Controllers
 {
     [ApiController]
-    [Route("Clients")]
+    [Route("[controller]")]
     public class UsersController : ControllerBase
     {
         private readonly IUserService userService;
@@ -20,16 +21,23 @@ namespace HotelApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAsync()
+        public async Task<IActionResult> GetAllAsync()
         {
-            var clients = await userService.BrowseAsync();
-            return Ok(clients);
+            var users = await userService.BrowseAsync();
+            return Ok(users);
+        }
+
+        [HttpPost("removeuser")]
+        public async Task<IActionResult> RemoveUser(NumberDTO number)
+        {
+            await userService.DeleteAsync(number.Id);
+            return Ok();
         }
 
         [HttpPost("changerole")]
-        public async Task<IActionResult> ChangeRoleOfUser(int id, string role)
+        public async Task<IActionResult> ChangeRoleOfUser(UserForChangeRoleDTO userForChangeRoleDTO)
         {
-            await userService.ChangeRoleAsync(id, role);
+            await userService.ChangeRoleAsync(userForChangeRoleDTO.Id, userForChangeRoleDTO.Role);
             return Ok();
         }
     }

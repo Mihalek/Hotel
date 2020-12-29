@@ -27,6 +27,21 @@ namespace HotelApi.Controllers
             return Ok(users);
         }
 
+        
+        [HttpPut("updateuser/{id}")]
+        public async Task<IActionResult> UpdateAsync(int id, UserToUpdateDTO userToUpdateDTO)
+        {
+            await userService.UpdateUserAsync(id, userToUpdateDTO);
+            return Ok();
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetAsync(int id)
+        {
+            var user = await userService.GetAsync(id);
+            return Ok(user);
+        }
+
         [HttpPost("removeuser")]
         public async Task<IActionResult> RemoveUser(NumberDTO number)
         {

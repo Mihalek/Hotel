@@ -46,11 +46,27 @@ namespace HotelApi.Services
            await dataContext.SaveChangesAsync();
 
         }
+        public async Task UpdateUserAsync(int id, UserToUpdateDTO userToUpdateDTO)
+        {
+            var user = await dataContext.Users.FirstOrDefaultAsync(x => x.Id == id);
+            if (user != null)
+            {
+                user.Name = userToUpdateDTO.Name;
+                user.Surname = userToUpdateDTO.Surname;
+                user.Role = userToUpdateDTO.Role;
+                user.Address = userToUpdateDTO.Address;
+                user.DateOfBirth = userToUpdateDTO.DateOfBirth.ToLocalTime();
+                user.Email = userToUpdateDTO.Email;
+                dataContext.Users.Update(user);
+                await dataContext.SaveChangesAsync();
+            };
+
+        }
 
         public async Task ChangeRoleAsync(int id, string role)
         {
             var user = await dataContext.Users.FirstOrDefaultAsync(x => x.Id == id);
-            if (user != null && user.Role != "main");
+            if (user != null && user.Role != "main")
             {
                 user.Role = role;
                 dataContext.Users.Update(user);
@@ -58,13 +74,11 @@ namespace HotelApi.Services
             };
 
         }
-
-
-        public async Task<UserForLoginDTO> GetAsync(int id)
+        public async Task<UserToGetDTO> GetAsync(int id)
         {
             var client = await dataContext.Users.FirstOrDefaultAsync(x => x.Id == id);
 
-            return mapper.Map<UserForLoginDTO>(client);
+            return mapper.Map<UserToGetDTO>(client);
         }
     }
 }

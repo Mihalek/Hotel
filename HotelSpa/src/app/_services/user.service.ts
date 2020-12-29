@@ -16,9 +16,15 @@ constructor(private http: HttpClient) { }
 getUsers() : Observable<User[]> {
   return this.http.get<User[]>(this.baseUrl +'users');
 }
-
+getUser(id : number) : Observable<User> {
+  return this.http.get<User>(this.baseUrl +'users/'+id);
+}
 deleteUser(model: any){
   return this.http.post(this.baseUrl+'users/removeuser', model);
+}
+
+updateUser(id: number, model: any){
+  return this.http.put(this.baseUrl+'users/updateuser/'+id, model);
 }
 
 changeRole(model: any){

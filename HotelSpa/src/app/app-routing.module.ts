@@ -9,12 +9,14 @@ import { ReservationslistComponent } from './reservationslist/reservationslist.c
 import { ReserveroomComponent } from './reserveroom/reserveroom.component';
 import { RoomsComponent } from './rooms/rooms.component';
 import { ServicesComponent } from './services/services.component';
+import { SettingsComponent } from './settings/settings.component';
 import { AuthGuard } from './_guards/auth.guard';
 import { RoleGuard } from './_guards/role.guard';
 
 const routes: Routes = [
   {path: '' , pathMatch: 'full' , redirectTo: 'register'},
   {path: 'reservations', component: ReservationslistComponent, canActivate: [AuthGuard]},
+  {path: 'settings', component: SettingsComponent, canActivate: [AuthGuard]},
   {path: 'register' , component: RegisterComponent},
   {path: 'rooms' , component: RoomsComponent},
   {path: 'services' , component: ServicesComponent},

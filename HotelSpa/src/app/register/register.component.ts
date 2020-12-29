@@ -1,6 +1,7 @@
 import { ViewChild } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { Form, FormGroup, NgForm } from '@angular/forms';
+import { AlertifyService } from '../_services/alertify.service';
 import { AuthService } from '../_services/auth.service';
 
 @Component({
@@ -12,7 +13,7 @@ export class RegisterComponent implements OnInit {
 
   registerMode = false;
   model:any ={};
-  constructor(public authService: AuthService) { }
+  constructor(public authService: AuthService, public alertify : AlertifyService) { }
   @ViewChild('registerForm') registerForm : NgForm;
 
   ngOnInit(): void {
@@ -23,11 +24,11 @@ export class RegisterComponent implements OnInit {
   }
   register(){
     this.authService.register(this.model).subscribe(() =>{
-      console.log('congratulation, you are new user');
+      this.alertify.success('Congratulation, you are registered in!');
       this.registerForm.reset();
       this.registerToggle();
     }, error =>{
-      console.log(error);
+      this.alertify.error('Sorry, error of register!');
     });
   }
   loggedIn(){

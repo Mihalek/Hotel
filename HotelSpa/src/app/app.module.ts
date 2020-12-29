@@ -31,9 +31,15 @@ import { AdminmessagesComponent } from './adminmessages/adminmessages.component'
 import { AdminuserslistComponent } from './adminuserslist/adminuserslist.component';
 import { MatPaginatorModule} from '@angular/material/paginator'
 import { ChangeroleComponent } from './changerole/changerole.component';
+import { SettingsComponent } from './settings/settings.component';
+import { UserService } from './_services/user.service';
+import { AlertifyService } from './_services/alertify.service';
+import { MessageService } from './_services/message.service';
+import { ReservationService } from './_services/reservation.service';
+import { RoleGuard } from './_guards/role.guard';
 
 @NgModule({
-  declarations: [							
+  declarations: [								
     AppComponent,
     NavComponent,
     RegisterComponent,
@@ -51,7 +57,8 @@ import { ChangeroleComponent } from './changerole/changerole.component';
       AdminreservationslistComponent,
       AdminmessagesComponent,
       AdminuserslistComponent,
-      ChangeroleComponent
+      ChangeroleComponent,
+      SettingsComponent
    ],
   imports: [
     BrowserModule,
@@ -69,7 +76,12 @@ import { ChangeroleComponent } from './changerole/changerole.component';
   providers: [
     RoomService,
     AuthService, 
-    AuthGuard  
+    AuthGuard,
+    UserService,
+    AlertifyService,
+    MessageService,
+    ReservationService,
+    RoleGuard
   ],
   bootstrap: [AppComponent]
 })
